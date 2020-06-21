@@ -14,6 +14,7 @@ async function createWindow() {
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
+
   if (isDev) {
     //BrowserWindow.addDevToolsExtension('~/Library/Application Support/Google/Chrome/Profile 1/Extensions/fmkadmapgofadopljbjfkapdkoienihi')
     await session.defaultSession.loadExtension(
