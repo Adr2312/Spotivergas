@@ -1,13 +1,13 @@
 const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, BrowserWindow, session } = require("electron");
+
 
 const path = require("path");
 const isDev = require("electron-is-dev");
 
 let mainWindow;
 
-function createWindow() {
+async function createWindow() {
   mainWindow = new BrowserWindow({ width: 900, height: 680 });
   mainWindow.loadURL(
     isDev
@@ -15,8 +15,10 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
   if (isDev) {
-    // Open the DevTools.
-    //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
+    //BrowserWindow.addDevToolsExtension('~/Library/Application Support/Google/Chrome/Profile 1/Extensions/fmkadmapgofadopljbjfkapdkoienihi')
+    await session.defaultSession.loadExtension(
+      path.join(__dirname, "../react_dev_tools")
+    );
     mainWindow.webContents.openDevTools();
   }
   mainWindow.on("closed", () => (mainWindow = null));
