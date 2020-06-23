@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button } from "semantic-ui-react";
 
-//import "./AuthOptions.scss";
+import "./AuthOptions.scss";
 
-export default function Authoptions(props) {
+
+export default function AuthOptions(props) {
     const { setSelectedForm } = props;
 
 
@@ -12,6 +13,7 @@ export default function Authoptions(props) {
             <h2>Millones de canciones, gratis en Spotivergas</h2>
             <Button className="register" onClick={() => setSelectedForm("register")}>Registrarte gratis</Button>
             <Button className="login" onClick={() => setSelectedForm("login")}>Iniciar Sesión</Button>
+
         </div>
     )
 }
